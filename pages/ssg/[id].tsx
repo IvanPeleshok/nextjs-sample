@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 
-export default ({ time }: { time: string }) => <div>{time}</div>;
+export default function Component({time}: {time: string}) { return <div>{time}</div> }
 
 export const getStaticPaths: GetStaticPaths = async (context) => {
     return {
