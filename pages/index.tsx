@@ -8,7 +8,7 @@ interface IHomeProps {
 const Home: NextPage<IHomeProps> = ({time}) => {
   return (
     <>
-     {`Sween home. Current time ${new Date().toDateString()}`}
+     {`Sween home. Current time ${new Date().toTimeString()}`}
     </>
   )
 }

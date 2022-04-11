@@ -8,7 +8,7 @@ export const getStaticPaths: GetStaticPaths = async (context) => {
             {   params: {   id: "1" }   },
             {   params: {   id: "2" }   },
         ],
-        fallback: "blocking",
+        fallback: true,
     };
 };
 
