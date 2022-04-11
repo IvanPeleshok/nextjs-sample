@@ -7,9 +7,14 @@ export function Navbar() {
             <Link href="/ssr">GetServerSideProps</Link>
             <Link href="/ssg">GetStaticProps</Link>
             <Link href="/ssg/1">GetStaticPaths</Link>
+            <div className="navbar__splitter"/>
             <style jsx global>
                 {`
                     a {
+                        margin-right: 10px;
+                    }
+
+                    .navbar__splitter {
                         margin: 10px;
                     }
                 `}
