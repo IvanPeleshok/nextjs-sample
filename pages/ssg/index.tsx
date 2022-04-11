@@ -7,6 +7,6 @@ export const getStaticProps: GetStaticProps = async (conext) => {
         props: {
             time: new Date().getSeconds(),
         },
-        revalidate: 60
+        revalidate: 10
     };
 };
