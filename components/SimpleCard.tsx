@@ -8,10 +8,15 @@ import Typography from "@material-ui/core/Typography";
 import { useRouter } from "next/router";
 import { ICard } from "../types/ICard";
 
+interface ISimpleCardProps extends ICard {
+    handlerClick?: (id: number) => void;
+}
+
 const useStyles = makeStyles({
     root: {
         width: 250,
-        margin: 10
+        margin: 10,
+        cursor: "pointer",
     },
     bullet: {
         display: "inline-block",
@@ -26,34 +31,32 @@ const useStyles = makeStyles({
     },
 });
 
-export function SimpleCard({language, html_url, name, description }: ICard) {
+export function SimpleCard({ language, html_url, name, description, id, handlerClick }: ISimpleCardProps) {
     const classes = useStyles();
     const router = useRouter();
 
     const more = (ev: React.MouseEvent) => {
         ev.stopPropagation();
         router.push(html_url);
-    }
-
-    const onClick = () => {
-
-    }
+    };
 
     return (
         <Card className={classes.root}>
             <CardContent>
-                <Typography variant="h5" component="h2">
-                    { name }
+                <Typography variant="h5" component="h2" onClick={() => handlerClick && handlerClick!(id!)} style={{ cursor: "pointer" }}>
+                    {name}
                 </Typography>
                 <Typography variant="body2" component="p">
-                   { description }
+                    {description}
                 </Typography>
                 <Typography className={classes.pos} color="textSecondary">
-                    { language }
+                    {language}
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small" onClick={more}>Learn More</Button>
+                <Button size="small" onClick={more}>
+                    Learn More
+                </Button>
             </CardActions>
         </Card>
     );

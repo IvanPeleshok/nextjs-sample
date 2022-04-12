@@ -30,5 +30,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
         props: {
             ...card[0],
         },
+        revalidate: 60
     };
 };

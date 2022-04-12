@@ -1,6 +1,7 @@
 import { Grid } from "@material-ui/core";
 import axios from "axios";
 import type { GetStaticProps, NextPage } from "next";
+import { useRouter } from "next/router";
 import { SimpleCard } from "../../components/SimpleCard";
 import { MainLayout } from "../../layout/MainLayout";
 import { ICard } from "../../types/ICard";
@@ -10,11 +11,17 @@ interface IHomeProps {
 }
 
 const Home: NextPage<IHomeProps> = ({ cards }) => {
+    const router = useRouter();
+    const handlerClick = (id: number) => {
+        router.push("/repositories/" + id);
+    };
     return (
         <MainLayout>
-            <Grid container >
+            <Grid container>
                 {cards.map((card) => (
-                    <span key={card.id}><SimpleCard {...card} /></span>
+                    <span key={card.id}>
+                        <SimpleCard {...card} handlerClick={handlerClick} />
+                    </span>
                 ))}
             </Grid>
         </MainLayout>
@@ -27,7 +34,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
         props: {
             cards: cards.data,
         },
-        revalidate: 30
+        revalidate: 30,
     };
 };
 
