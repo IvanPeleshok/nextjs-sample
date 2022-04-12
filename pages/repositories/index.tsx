@@ -1,9 +1,9 @@
 import { Grid } from "@material-ui/core";
 import axios from "axios";
 import type { GetStaticProps, NextPage } from "next";
-import { SimpleCard } from "../components/SimpleCard";
-import { MainLayout } from "../layout/MainLayout";
-import { ICard } from "../types/ICard";
+import { SimpleCard } from "../../components/SimpleCard";
+import { MainLayout } from "../../layout/MainLayout";
+import { ICard } from "../../types/ICard";
 
 interface IHomeProps {
     cards: ICard[];
@@ -12,18 +12,16 @@ interface IHomeProps {
 const Home: NextPage<IHomeProps> = ({ cards }) => {
     return (
         <MainLayout>
-            <Grid container>
+            <Grid container >
                 {cards.map((card) => (
-                    <span key={card.id}>
-                        <SimpleCard {...card} />
-                    </span>
+                    <span key={card.id}><SimpleCard {...card} /></span>
                 ))}
             </Grid>
         </MainLayout>
     );
 };
 
-export const getStaticProps: GetStaticProps = async (ctx) => {
+export const getStaticProps: GetStaticProps = async (context) => {
     const cards = await axios.get("https://api.github.com/users/IvanPeleshok/repos");
     return {
         props: {
