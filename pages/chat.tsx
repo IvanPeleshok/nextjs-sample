@@ -53,8 +53,8 @@ export default function Chat() {
 
     return (
         <MainLayout>
-            {chat.map((el) => (
-                <div>
+            {chat.map((el, index) => (
+                <div key={index}>
                     <span>{el.user === localStorage.getItem('usernmae') ? "Me" : el.user}: </span>
                     <span>{el.message}</span>
                 </div>
