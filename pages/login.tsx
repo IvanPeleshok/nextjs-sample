@@ -23,7 +23,8 @@ const Basic = () => {
                 onSubmit={async (values, { setSubmitting }) => {
                     try {
                         const response = await axios.post("/api/auth/login", { ...values });
-                        router.push('/')
+                        localStorage.setItem("username", values.username);
+                        router.push("/");
                         setSubmitting(false);
                     } catch (error) {
                         throw error;

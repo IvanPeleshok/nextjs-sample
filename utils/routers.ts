@@ -1,4 +1,3 @@
-import React from "react";
 import { SvgIconTypeMap } from "@material-ui/core";
 import { OverridableComponent } from "@material-ui/core/OverridableComponent";
 import Home from "@material-ui/icons/Home";
@@ -6,6 +5,7 @@ import AccountBalanceTwoTone from "@material-ui/icons/AccountBalanceTwoTone";
 import Lock from "@material-ui/icons/Lock";
 import LockOpen from "@material-ui/icons/LockOpen";
 import HowToReg from "@material-ui/icons/HowToReg";
+import Chat from '@material-ui/icons/Chat';
 import axios from "axios";
 
 export interface IRoute {
@@ -48,11 +48,11 @@ export const routes = {
         route: "/repositories",
         Icon: AccountBalanceTwoTone,
     },
-    ssg: {
-        title: "SSG",
-        route: "/ssg",
-        Icon: AccountBalanceTwoTone,
-    }
+    chat: {
+        title: "Chat",
+        route: "/chat",
+        Icon: Chat
+    },
 } as IRoutes;
 
 export const routerKeys = Object.keys(routes);
