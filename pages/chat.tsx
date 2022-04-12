@@ -23,6 +23,7 @@ export default function Chat() {
         });
 
         socket.on("connect", () => {
+            console.log("connect io");
             setConnected(true);
         });
 
@@ -35,10 +36,10 @@ export default function Chat() {
     }, []);
 
     const sendMessage = async () => {
-        localStorage?.getItem('username')
+        localStorage?.getItem("username");
         if (message) {
             const msg: IMsg = {
-                user: localStorage.getItem('username')!,
+                user: localStorage.getItem("username")!,
                 message,
             };
 
@@ -55,13 +56,18 @@ export default function Chat() {
         <MainLayout>
             {chat.map((el, index) => (
                 <div key={index}>
-                    <span>{el.user === localStorage.getItem('usernmae') ? "Me" : el.user}: </span>
+                    <span>{el.user === localStorage.getItem("usernmae") ? "Me" : el.user}: </span>
                     <span>{el.message}</span>
                 </div>
             ))}
 
             <span className={styles.panel}>
-                <TextField label={connected ? "message" : "Connected"} className={styles.input} value={message} onChange={(ev) => setMessage(ev.target.value)} />
+                <TextField
+                    label={connected ? "message" : "Connected"}
+                    className={styles.input}
+                    value={message}
+                    onChange={(ev) => setMessage(ev.target.value)}
+                />
                 <IconButton onClick={sendMessage}>
                     <Send />
                 </IconButton>
