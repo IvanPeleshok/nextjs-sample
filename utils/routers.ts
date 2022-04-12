@@ -39,7 +39,7 @@ export const routes = {
         title: "Logout",
         action: async (callback: Function) => {
             await axios.get("/api/auth/logout");
-            callback && callback('/');
+            callback && callback('/login');
         },
         Icon: Lock,
     },

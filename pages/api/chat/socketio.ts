@@ -17,4 +17,6 @@ export default async (req: NextApiRequest, res: NextApiResponseServerIO) => {
         });
         res.socket.server.io = io;
     }
+
+    res.end();
 };
